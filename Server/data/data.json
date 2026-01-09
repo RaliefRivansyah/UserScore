@@ -1,0 +1,256 @@
+{
+  "information_groups": [
+    {
+      "code": "INFO_1",
+      "name": "Informasi 1",
+      "weight": 5,
+      "group_items": [
+        {
+          "name": "Umur Pemohon",
+          "weight": 30,
+          "items": [
+            { "label": "≤ 25 Tahun", "value": 25 },
+            { "label": "26–30 Tahun", "value": 50 },
+            { "label": "31–45 Tahun", "value": 100 },
+            { "label": "> 45 Tahun", "value": 75 }
+          ]
+        },
+        {
+          "name": "Umur Pemohon + Tenor",
+          "weight": 10,
+          "items": [
+            { "label": "Di atas Ketentuan", "value": 25 },
+            { "label": "Dalam Ketentuan", "value": 100 }
+          ]
+        },
+        {
+          "name": "Status Perkawinan",
+          "weight": 40,
+          "items": [
+            { "label": "Belum Kawin", "value": 25 },
+            { "label": "Kawin dengan 1–2 tanggungan", "value": 65 },
+            { "label": "Kawin dengan >2 tanggungan", "value": 45 },
+            { "label": "Kawin tanpa tanggungan", "value": 100 }
+          ]
+        },
+        {
+          "name": "Pendidikan",
+          "weight": 20,
+          "items": [
+            { "label": "≤ D1/D2/D3", "value": 50 },
+            { "label": "S1", "value": 75 },
+            { "label": "S2 ke atas", "value": 100 }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "INFO_2",
+      "name": "Informasi 2",
+      "weight": 15,
+      "group_items": [
+        {
+          "name": "Alamat tempat tinggal",
+          "weight": 40,
+          "items": [
+            { "label": "Milik sendiri dengan data Bank", "value": 100 },
+            { "label": "Sewa dengan data Bank", "value": 50 },
+            { "label": "Lain-lain", "value": 25 }
+          ]
+        },
+        {
+          "name": "Kepemilikan tempat tinggal",
+          "weight": 30,
+          "items": [
+            { "label": "Milik Sendiri", "value": 100 },
+            { "label": "Milik Keluarga", "value": 50 },
+            { "label": "Milik sendiri (tidak permanen)", "value": 75 }
+          ]
+        },
+        {
+          "name": "Lama menempati",
+          "weight": 30,
+          "items": [
+            { "label": "< 1 Tahun", "value": 25 },
+            { "label": "2–5 Tahun", "value": 50 },
+            { "label": "> 5 Tahun", "value": 75 },
+            { "label": "≥ 10 Tahun", "value": 100 }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "INFO_3",
+      "name": "Informasi 3",
+      "weight": 20,
+      "group_items": [
+        {
+          "name": "Kategori Perusahaan",
+          "weight": 20,
+          "items": [
+            { "label": "Lembaga Departemen", "value": 100 },
+            { "label": "BUMN", "value": 75 },
+            { "label": "Swasta tidak punya rating", "value": 25 },
+            { "label": "Swasta dengan rating A", "value": 75 },
+            { "label": "Swasta kategori B", "value": 50 },
+            { "label": "Swasta kategori C", "value": 25 }
+          ]
+        },
+        {
+          "name": "Jabatan",
+          "weight": 20,
+          "items": [
+            { "label": "Staff", "value": 50 },
+            { "label": "Direktur", "value": 75 },
+            { "label": "Komisaris", "value": 100 }
+          ]
+        },
+        {
+          "name": "Lama bekerja",
+          "weight": 20,
+          "items": [
+            { "label": "< 2 Tahun", "value": 25 },
+            { "label": "2–5 Tahun", "value": 50 },
+            { "label": "5–10 Tahun", "value": 75 },
+            { "label": "> 10 Tahun", "value": 100 }
+          ]
+        },
+        {
+          "name": "Pendapatan THP",
+          "weight": 40,
+          "items": [
+            { "label": "< Rp 10 Juta", "value": 25 },
+            { "label": "Rp 10–25 Juta", "value": 50 },
+            { "label": "Rp 25–50 Juta", "value": 75 },
+            { "label": "> Rp 50 Juta", "value": 100 }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "INFO_4",
+      "name": "Informasi 4",
+      "weight": 15,
+      "group_items": [
+        {
+          "name": "Rekening Bank",
+          "weight": 10,
+          "items": [
+            { "label": "Tabungan", "value": 50 },
+            { "label": "Giro", "value": 75 },
+            { "label": "Tabungan + Deposito", "value": 100 }
+          ]
+        },
+        {
+          "name": "Rata-rata saldo per bulan",
+          "weight": 15,
+          "items": [
+            { "label": "< Rp 10 Juta", "value": 25 },
+            { "label": "Rp 10–25 Juta", "value": 50 },
+            { "label": "Rp 25–50 Juta", "value": 75 },
+            { "label": "> Rp 50 Juta", "value": 100 }
+          ]
+        },
+        {
+          "name": "Track record pembayaran angsuran",
+          "weight": 15,
+          "items": [
+            { "label": "Pembayaran lancar", "value": 100 },
+            { "label": "Angsuran tepat waktu", "value": 75 },
+            { "label": "Angsuran tidak lancar", "value": 25 }
+          ]
+        },
+        {
+          "name": "Track Data BI",
+          "weight": 40,
+          "items": [
+            { "label": "Collectibilitas 1 (Baik)", "value": 100 },
+            { "label": "Collectibilitas 2", "value": 50 },
+            { "label": "Tidak ada fasilitas", "value": 75 },
+            { "label": "Lancar", "value": 100 }
+          ]
+        },
+        {
+          "name": "Kepemilikan Kartu Kredit",
+          "weight": 20,
+          "items": [
+            { "label": "Tidak Ada", "value": 25 },
+            { "label": "Ada", "value": 50 },
+            { "label": "Gold", "value": 75 },
+            { "label": "Platinum atau di atasnya", "value": 100 }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "INFO_5",
+      "name": "Informasi 5",
+      "weight": 30,
+      "group_items": [
+        {
+          "name": "Usia",
+          "weight": 25,
+          "items": [
+            { "label": "< 35 Tahun", "value": 25 },
+            { "label": "35–45 Tahun", "value": 50 },
+            { "label": "45–50 Tahun", "value": 75 },
+            { "label": "> 50 Tahun", "value": 100 }
+          ]
+        },
+        {
+          "name": "Debt Service Ratio",
+          "weight": 25,
+          "items": [
+            { "label": "< 40%", "value": 100 },
+            { "label": "40–50%", "value": 75 },
+            { "label": "50–60%", "value": 50 },
+            { "label": "> 60%", "value": 25 }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "INFO_6",
+      "name": "Informasi 6",
+      "weight": 25,
+      "group_items": [
+        {
+          "name": "Hasil Appraisal",
+          "weight": 10,
+          "items": [
+            { "label": "Marketable", "value": 100 },
+            { "label": "Tidak Marketable", "value": 25 }
+          ]
+        },
+        {
+          "name": "Luas bangunan",
+          "weight": 20,
+          "items": [
+            { "label": "< 200 m2", "value": 25 },
+            { "label": "200–400 m2", "value": 50 },
+            { "label": "> 400 m2", "value": 75 }
+          ]
+        },
+        {
+          "name": "Tujuan dari Pembiayaan",
+          "weight": 10,
+          "items": [
+            { "label": "Konsumtif", "value": 25 },
+            { "label": "Investasi", "value": 50 },
+            { "label": "Renovasi di Tempat Sendiri", "value": 75 }
+          ]
+        },
+        {
+          "name": "LTV",
+          "weight": 60,
+          "items": [
+            { "label": "< 70%", "value": 100 },
+            { "label": "70–80%", "value": 75 },
+            { "label": "80–90%", "value": 50 },
+            { "label": "> 90%", "value": 25 }
+          ]
+        }
+      ]
+    }
+  ]
+}

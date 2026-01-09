@@ -3,7 +3,7 @@ const { compare } = require('../helpers/bcrypt');
 const { signToken } = require('../helpers/jwt');
 
 class AuthController {
-    static async register(req, res) {
+    static async register(req, res, next) {
         try {
             const { username, password } = req.body;
 
@@ -20,12 +20,7 @@ class AuthController {
                 },
             });
         } catch (error) {
-            if (error.name === 'SequelizeValidationError' || error.name === 'SequelizeUniqueConstraintError') {
-                const errors = error.errors.map((err) => err.message);
-                res.status(400).json({ errors });
-            } else {
-                res.status(500).json({ message: 'Internal server error' });
-            }
+            next(error);
         }
     }
 
@@ -65,7 +60,7 @@ class AuthController {
                 },
             });
         } catch (error) {
-            res.status(500).json({ message: 'Internal server error' });
+            next(error);
         }
     }
 }
