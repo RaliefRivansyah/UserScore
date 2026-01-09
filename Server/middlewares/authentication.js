@@ -1,33 +1,33 @@
-const { verifyToken } = require('../helpers/jwt')
-const { User } = require('../models')
+const { verifyToken } = require('../helpers/jwt');
+const { Admin } = require('../models');
 
 const authentication = async (req, res, next) => {
     try {
-        const { authorization } = req.headers
+        const { authorization } = req.headers;
 
-        if (!authorization) throw { name: "Unauthorized" }
+        if (!authorization) throw { name: 'Unauthorized' };
 
-        const access_token = authorization.split(' ')[1]
+        const access_token = authorization.split(' ')[1];
 
-        const payload = verifyToken(access_token)
+        const payload = verifyToken(access_token);
 
-        const user = await User.findOne({
+        const admin = await Admin.findOne({
             where: {
-                email: payload.email
-            }
-        })
+                id: payload.id,
+            },
+        });
 
-        if (!user) throw { name: "Unauthorized" }
-        
+        if (!admin) throw { name: 'Unauthorized' };
+
         req.loginInfo = {
-            userId: user.id,
-            username: user.username
-        }
-    console.log('req.loginInfo:', req.loginInfo)
-        next()
-    } catch (err) {
-        next(err)
-    }
-}
+            adminId: admin.id,
+            username: admin.username,
+        };
 
-module.exports = authentication
+        next();
+    } catch (err) {
+        next(err);
+    }
+};
+
+module.exports = authentication;
