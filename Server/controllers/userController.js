@@ -1,60 +1,14 @@
 const { User, UserAnswer, InformationGroup, GroupItem, Item, sequelize } = require('../models');
+const ScoreCalculator = require('../helpers/calculate');
 
 class UserController {
-    static async calculateScore(answers) {
-        const infoGroups = await InformationGroup.findAll({
-            include: [
-                {
-                    model: GroupItem,
-                    as: 'group_items',
-                    include: [{ model: Item, as: 'items' }],
-                },
-            ],
-        });
-
-        let totalInfoGroupWeight = 0;
-        let weightedScoreSum = 0;
-
-        for (const group of infoGroups) {
-            totalInfoGroupWeight += group.weight;
-            let groupScore = 0;
-            let totalGroupItemWeight = 0;
-
-            for (const gItem of group.group_items) {
-                totalGroupItemWeight += gItem.weight;
-            }
-
-            for (const gItem of group.group_items) {
-                const answer = answers.find((a) => a.group_item_id === gItem.id);
-                if (answer) {
-                    const selectedItem = gItem.items.find((i) => i.id === answer.item_id);
-                    if (selectedItem) {
-                        const normalizedWeight = totalGroupItemWeight > 0 ? gItem.weight / totalGroupItemWeight : 0;
-                        groupScore += selectedItem.value * normalizedWeight;
-                    }
-                }
-            }
-
-            weightedScoreSum += groupScore * group.weight;
-        }
-
-        const finalScore = totalInfoGroupWeight > 0 ? weightedScoreSum / totalInfoGroupWeight : 0;
-        return parseFloat(finalScore.toFixed(2));
-    }
-
-    static determineRiskLevel(score) {
-        if (score < 55) return 'HIGH RISK';
-        if (score >= 55 && score <= 70) return 'MEDIUM RISK';
-        return 'LOW RISK';
-    }
-
     static async create(req, res, next) {
         const transaction = await sequelize.transaction();
         try {
             const { name, birth_place, birth_date, gender, postal_code, address, answers } = req.body;
 
-            const total_score = await UserController.calculateScore(answers);
-            const risk_level = UserController.determineRiskLevel(total_score);
+            const total_score = await ScoreCalculator.calculateScore(answers);
+            const risk_level = ScoreCalculator.determineRiskLevel(total_score);
 
             const user = await User.create(
                 {
@@ -160,8 +114,8 @@ class UserController {
                 return res.status(404).json({ message: 'User not found' });
             }
 
-            const total_score = await UserController.calculateScore(answers);
-            const risk_level = UserController.determineRiskLevel(total_score);
+            const total_score = await ScoreCalculator.calculateScore(answers);
+            const risk_level = ScoreCalculator.determineRiskLevel(total_score);
 
             await user.update(
                 {
